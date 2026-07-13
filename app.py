@@ -13,7 +13,8 @@ import strava  # noqa: E402
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "dev")
 
-REDIRECT_URI = "http://localhost:5001/exchange_token"
+APP_BASE_URL = os.environ.get("APP_BASE_URL", "http://localhost:5001")
+REDIRECT_URI = f"{APP_BASE_URL}/exchange_token"
 SCOPE = "activity:write,activity:read_all"
 
 
@@ -133,4 +134,4 @@ def activity_writeback(activity_id):
 
 
 if __name__ == "__main__":
-    app.run(port=5001, debug=True)
+    app.run(port=int(os.environ.get("PORT", 5001)), debug=True)
