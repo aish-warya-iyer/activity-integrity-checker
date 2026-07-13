@@ -8,3 +8,4 @@ enkryptai-sdk
 pandas
 tabulate
 lyzr-python-sdk
+gunicorn

@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: activity-integrity-checker
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: STRAVA_CLIENT_ID
+        sync: false
+      - key: STRAVA_CLIENT_SECRET
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: INSFORGE_API_URL
+        sync: false
+      - key: INSFORGE_API_KEY
+        sync: false
+      - key: ENKRYPT_API_KEY
+        sync: false
+      - key: LYZR_AGENT_API_KEY
+        sync: false
+      - key: LYZR_AGENT_ID
+        sync: false
+      - key: APP_BASE_URL
+        sync: false
