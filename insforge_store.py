@@ -28,6 +28,7 @@ def save_tokens(data):
     resp = requests.post(
         f"{API_URL}/api/database/records/{TABLE}",
         headers={**HEADERS, "Prefer": "resolution=merge-duplicates,return=representation"},
+        params={"on_conflict": "service"},
         json=[payload],
     )
     resp.raise_for_status()
