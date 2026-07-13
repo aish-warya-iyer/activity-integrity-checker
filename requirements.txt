@@ -1,0 +1,10 @@
+flask
+requests
+python-dotenv
+polyline
+shapely
+pyproj
+enkryptai-sdk
+pandas
+tabulate
+lyzr-python-sdk
