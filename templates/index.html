@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Activity Integrity Checker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Activity Integrity Checker</h1>
+    <div id="authStatus" class="auth-status"></div>
+  </header>
+
+  <main id="app">
+    <section id="loggedOut" class="panel hidden">
+      <p>Connect your Strava account to check activities for course-cutting or GPS deviation.</p>
+      <a class="btn btn-primary" href="/login">Connect with Strava</a>
+    </section>
+
+    <section id="loggedIn" class="panel hidden">
+      <div class="layout">
+        <div class="activities-col">
+          <h2>Recent Activities</h2>
+          <ul id="activityList" class="activity-list"></ul>
+        </div>
+
+        <div class="detail-col">
+          <div id="emptyState" class="empty-state">Select an activity to analyze it.</div>
+
+          <div id="activityDetail" class="hidden">
+            <h2 id="detailName"></h2>
+            <p id="detailMeta" class="meta"></p>
+
+            <button id="analyzeBtn" class="btn btn-secondary">Analyze Course Integrity</button>
+            <button id="writebackBtn" class="btn btn-primary hidden">Write Result to Strava</button>
+
+            <div id="analysisResult" class="hidden">
+              <h3>Segment Deviation Results</h3>
+              <div id="segmentList"></div>
+
+              <div id="explanationBox" class="explanation-box hidden">
+                <h3>Explanation</h3>
+                <p id="explanationText"></p>
+                <p id="guardrailNote" class="guardrail-note"></p>
+              </div>
+            </div>
+
+            <div id="writebackResult" class="writeback-result hidden"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
